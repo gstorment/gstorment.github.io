@@ -379,3 +379,23 @@ pre {
   align-items: center;
   gap: 20px;
 }
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #5a4d66;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #2a2030;
+}
+
+.project-preview img {
+  max-width: 200px;
+  border-radius: 8px;
+}

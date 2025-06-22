@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="home">
+  
+
+  {{ content }}
+
+  {%- if site.projects.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Projects" }}</h2>
+    <ul class="post-list">
+  {%- for project in site.projects -%}
+    <li class="post-preview">
+      <div class="post-preview-content">
+        <div class="post-text">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta">{{ project.date | date: date_format }}</span>
+          <h3>
+            <a class="post-link" href="{{ project.url | relative_url }}">
+              {{ project.title | escape }}
+            </a>
+          </h3>
+          {%- if project.description -%}
+            <p class="post-description">{{ project.description }}</p>
+          {%- endif -%}
+        </div>
+        {%- if project.image -%}
+          <div class="post-image-wrapper">
+            <img src="{{ project.image | relative_url }}" alt="Preview for {{ project.title }}" class="post-image">
+          </div>
+        {%- endif -%}
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>
+  {%- endif -%}
+</div>

@@ -22,7 +22,7 @@ title: gstorment.dev
 email: gagestorment@gmail.com
 author: Gage Storment
 description: >- # this means to ignore newlines until "baseurl:"
-  The place where I document various attempts of trying to do things I find cool. 
+  The place where I document various attempts of trying to do things I find cool.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 pronouns: (he/him)
@@ -32,6 +32,10 @@ github_username:  gstorment
 theme: minima
 plugins:
   - jekyll-feed
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
 
 # Exclude from processing.
 # The following items will not be processed, by default.

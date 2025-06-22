@@ -13,6 +13,16 @@ layout: default
         <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
           {{ page.date | date: date_format }}
+          {%- if page.project -%}
+      {%- assign project_slug = page.project | slugify -%}
+      <p class="post-description">
+        <a href="{{ '/projects/' | append: project_slug | append: '/' | relative_url }}">
+          {{ page.project }}
+        </a>
+      </p>
+    {%- endif -%}
+
+
         </time>
         {%- if page.author -%}
           • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -20,14 +30,20 @@ layout: default
             </span>
         {%- endif -%}
       </p>
-      {%- if page.description -%}
-        <p class="post-description">{{ page.description }}</p>
-      {%- endif -%}
-      {%- if page.image -%}
+      {%- if page.description or page.image -%}
+  <div class="post-description-image-wrapper">
+    {%- if page.description -%}
+      <p class="post-description">{{ page.description }}</p>
+    {%- endif -%}
+    {%- if page.image -%}
       <div class="post-image-wrapper">
         <img src="{{ page.image | relative_url }}" alt="Post image for {{ page.title }}" class="post-image">
       </div>
     {%- endif -%}
+  </div>
+{%- endif -%}
+
+    
     </header>
   </div>
 
@@ -41,3 +57,33 @@ layout: default
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
+
+{%- assign related_posts = site.posts | where: "project", page.title -%}
+
+{%- if related_posts.size > 0 -%}
+  <h1>Related Posts</h1>
+  <ul class="post-list">
+    {%- for post in related_posts -%}
+      <li class="post-preview">
+        <div class="post-preview-content">
+          <div class="post-text">
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if post.description -%}
+              <p class="post-description">{{ post.description }}</p>
+            {%- endif -%}
+          </div>
+          {%- if post.image -%}
+            <div class="post-image-wrapper">
+              <img src="{{ post.image | relative_url }}" alt="Preview for {{ post.title }}" class="post-image">
+            </div>
+          {%- endif -%}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
