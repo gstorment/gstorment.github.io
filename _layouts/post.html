@@ -17,7 +17,7 @@ layout: default
       {%- assign project_slug = page.project | slugify -%}
       <p class="post-description">
         <a href="{{ '/projects/' | append: project_slug | append: '/' | relative_url }}">
-          {{ page.project }}
+          Project: {{ page.project }}
         </a>
       </p>
     {%- endif -%}

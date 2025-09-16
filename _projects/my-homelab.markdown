@@ -3,6 +3,7 @@ layout: post
 title:  "My Homelab"
 description: "What can you do with old gaming computers and a severly underpowered Raspberry Pi?"
 image: /assets/images/homelab.jpg
+date:   2025-06-22
 ---
 ## General Overview
 I had two old gaming computers that I don't use anymore, and an old Raspberry Pi that was previously used as a retro gaming console, and figured they would be perfect to make a small homelab out of. They definitely don't have the most firepower, but they are definitely enough for some cool projects. The goal of this homelab is to familiarize myself with some tools, gain some experience in documenting that progress, and to have fun while creating something.

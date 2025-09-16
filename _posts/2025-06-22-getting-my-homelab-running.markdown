@@ -10,7 +10,7 @@ So I have all of the hardware ready, I just need to get everything connected, so
 
 The switch I have is an "easy smart switch", and it has a neat web-ui. This web-ui defaults to 192.168.0.1, but that's a minor problem, because my router's web-ui is on that same IP address. Luckily, this is a simple fix. I just have to statically set my IP to something that isnt 192.168.0.1, and connect my PC to it and change it to something else. I went ahead and statically set my IP to 192.168.0.10, and changed my switch's management interface to be at 192.168.0.2.
 
-![](/assets/switch-ip.png)
+![](/assets/images/switch-ip.png)
 
 Now, I contemplated for a while what the best setup would be for my situation. I wanted to try to avoid port forwarding. We had some mildly devastating experiences trying to get a VPN to properly work with my school's infrastructure (in hindsight, we may have spent too much time trying something that was ultimately not controlled by us), so I wanted to learn something else and be able to get that setup quickly on our servers. It then occurred to me, Cloudflare tunneling exists, and it is super straightforward to get setup. 
 
@@ -50,11 +50,11 @@ The [process for setting up GitHub access](https://developers.cloudflare.com/clo
 
 The only step left is to create the policy, and do some configuration to get things how we want it. When creating the policy, select Emails, and list the emails you want to authorize. This is not the final solution I would prefer, I would rather have it be tied to a GitHub Organization, but I was having some problems getting that setup, so we will return to it later. An example is below:
 
-![](/assets/zerotrustpolicy.png)
+![](/assets/images/zerotrustpolicy.png)
 
 After the policy was created, I made GitHub the only login method.
 
-![](/assets/loginmethods.png)
+![](/assets/images/loginmethods.png)
 
 Now, whenever trying to access Proxmox, you will be required to authorize with GitHub, and it will check the email account associated with your GitHub account for verification. Back to getting stuff tunneled.
 
